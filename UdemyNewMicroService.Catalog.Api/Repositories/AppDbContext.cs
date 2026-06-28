@@ -9,8 +9,8 @@ namespace UdemyNewMicroService.Catalog.Api.Repositories
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
-        DbSet<Category> Categories { get; set; }
-        DbSet<Course> Courses { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Course> Courses { get; set; }
 
         public static AppDbContext Create(IMongoDatabase database)
         {
