@@ -1,10 +1,4 @@
 services: 
-  udemynewmicroservice.catalog.api:
-    image: ${DOCKER_REGISTRY-}udemynewmicroservicecatalogapi
-    build:
-      context: ..
-      dockerfile: UdemyNewMicroService/UdemyNewMicroService.Catalog.Api/Dockerfile
-
   mongo.db.catalog:
     restart: always
     image: mongo:8.0-rc
