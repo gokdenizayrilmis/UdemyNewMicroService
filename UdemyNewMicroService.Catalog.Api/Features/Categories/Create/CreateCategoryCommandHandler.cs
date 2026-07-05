@@ -1,11 +1,4 @@
-﻿using MassTransit;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.Net;
-using UdemyNewMicroService.Catalog.Api.Repositories;
-using UdemyNewMicroService.Shared;
-
-namespace UdemyNewMicroService.Catalog.Api.Features.Categories.Create
+﻿namespace UdemyNewMicroService.Catalog.Api.Features.Categories.Create
 {
     public class CreateCategoryCommandHandler(AppDbContext context) : IRequestHandler<CreateCategoryCommand, ServiceResult<CreateCategoryResponse>>
     {
