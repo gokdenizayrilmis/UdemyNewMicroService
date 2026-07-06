@@ -20,6 +20,18 @@ builder.Services.AddCommonServiceExt(typeof(CatalogAssembly));
 
 var app = builder.Build();
 
+app.AddSeedDataExt().ContinueWith(x=>
+{
+    if (x.IsFaulted)
+    {
+        Console.WriteLine(x.Exception?.Message);
+    }
+    else
+    {
+        Console.WriteLine("Seed data added successfully.");
+    }
+}); //seed data için threadleri bloklamadan arka planda çalışma görevi burası
+
 app.AddCategoryGroupEndpointExt();
 app.AddCourseGroupEndpointExt();
 
