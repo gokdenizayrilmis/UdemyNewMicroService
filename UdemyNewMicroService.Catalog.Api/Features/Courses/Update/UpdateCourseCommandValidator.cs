@@ -1,8 +1,8 @@
-﻿namespace UdemyNewMicroService.Catalog.Api.Features.Courses.Create
+﻿namespace UdemyNewMicroService.Catalog.Api.Features.Courses.Update
 {
-    public class CreateCourseCommandValidator : AbstractValidator<CreateCourseCommand>
+    public class UpdateCourseCommandValidator : AbstractValidator<UpdateCourseCommand>
     {
-        public CreateCourseCommandValidator()
+        public UpdateCourseCommandValidator()
         {
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("{PropertyName} is required.")

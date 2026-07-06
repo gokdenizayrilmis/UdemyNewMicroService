@@ -17,7 +17,7 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses.GetAll
 
             foreach (var course in courses)
             {
-                course.Category = categories.First(c => c.Id == course.CategoryId);
+                course.Category = categories.FirstOrDefault(c => c.Id == course.CategoryId);
             }
 
                 var courseDtos = mapper.Map<List<CourseDto>>(courses);

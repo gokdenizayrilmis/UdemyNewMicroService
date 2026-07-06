@@ -1,6 +1,8 @@
 ﻿using UdemyNewMicroService.Catalog.Api.Features.Courses.Create;
+using UdemyNewMicroService.Catalog.Api.Features.Courses.Delete;
 using UdemyNewMicroService.Catalog.Api.Features.Courses.GetAll;
 using UdemyNewMicroService.Catalog.Api.Features.Courses.GetById;
+using UdemyNewMicroService.Catalog.Api.Features.Courses.Update;
 
 namespace UdemyNewMicroService.Catalog.Api.Features.Courses
 {
@@ -12,7 +14,9 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses
                 .WithTags("Courses")
                 .CreateCourseGroupItemEndpoint()
                 .GetAllCoursesGroupItemEndpoint()
-                .GetByIdCoursesGroupItemEndpoint();
+                .GetByIdCoursesGroupItemEndpoint()
+                .UpdateCourseGroupItemEndpoint()
+                .DeleteCoursesGroupItemEndpoint();
         }
     }
 }
