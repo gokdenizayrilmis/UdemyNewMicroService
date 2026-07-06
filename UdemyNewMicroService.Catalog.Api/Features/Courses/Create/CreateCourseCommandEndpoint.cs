@@ -11,6 +11,9 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses.Create
                 (await mediator.Send(command)).ToGenericResult())
                 .WithName("CreateCourse")
                 .Produces<Guid>(StatusCodes.Status201Created)
+                .Produces<Guid>(StatusCodes.Status404NotFound)
+                .Produces<Guid>(StatusCodes.Status400BadRequest)
+                .Produces<Guid>(StatusCodes.Status500InternalServerError)
                 .AddEndpointFilter<ValidationFilter<CreateCourseCommand>>();
 
             return group;

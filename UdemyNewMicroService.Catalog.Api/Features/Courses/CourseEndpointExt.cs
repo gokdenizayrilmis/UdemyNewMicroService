@@ -1,4 +1,6 @@
 ﻿using UdemyNewMicroService.Catalog.Api.Features.Courses.Create;
+using UdemyNewMicroService.Catalog.Api.Features.Courses.GetAll;
+using UdemyNewMicroService.Catalog.Api.Features.Courses.GetById;
 
 namespace UdemyNewMicroService.Catalog.Api.Features.Courses
 {
@@ -8,7 +10,9 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses
         {
             app.MapGroup("api/courses")
                 .WithTags("Courses")
-                .CreateCourseGroupItemEndpoint();
+                .CreateCourseGroupItemEndpoint()
+                .GetAllCoursesGroupItemEndpoint()
+                .GetByIdCoursesGroupItemEndpoint();
         }
     }
 }

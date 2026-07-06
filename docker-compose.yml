@@ -12,8 +12,8 @@ services:
       - mongo.db.catalog.volume:/data/db
 
   mongo.db.catalog.ui:
-    image: mongo-express:1.0.2-20-alpine3.19
     restart: always
+    image: mongo-express:1.0.2-20-alpine3.19
     container_name: mongo.db.catalog.ui.container
     ports:
       - 27032:8081

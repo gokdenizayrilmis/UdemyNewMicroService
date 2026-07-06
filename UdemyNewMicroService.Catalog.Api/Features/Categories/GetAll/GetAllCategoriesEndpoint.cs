@@ -1,11 +1,11 @@
 ﻿namespace UdemyNewMicroService.Catalog.Api.Features.Categories.GetAll
 {
-    public class GetAllCategoryQuery : IRequestByServiceResult<List<CategoryDto>>;
+    public class GetAllCategoriesQuery : IRequestByServiceResult<List<CategoryDto>>;
 
-    public class GetAllCategoryQueryHandler(AppDbContext context, IMapper mapper) : IRequestHandler<GetAllCategoryQuery, ServiceResult<List<CategoryDto>>>
+    public class GetAllCategoriesQueryHandler(AppDbContext context, IMapper mapper) : IRequestHandler<GetAllCategoriesQuery, ServiceResult<List<CategoryDto>>>
     {
         
-        public async Task<ServiceResult<List<CategoryDto>>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
+        public async Task<ServiceResult<List<CategoryDto>>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
             var categories = await context.Categories.ToListAsync(cancellationToken);
             var categoriesAsDto = mapper.Map<List<CategoryDto>>(categories);
@@ -14,12 +14,12 @@
 
     }
 
-    public static class GetAllCategoryEndpoint
+    public static class GetAllCategoriesEndpoint
     {
         public static RouteGroupBuilder GetAllCategoryGroupItemEndpoint(this RouteGroupBuilder group)
         {
             group.MapGet("/", async (IMediator mediator) =>
-                (await mediator.Send(new GetAllCategoryQuery())).ToGenericResult())
+                (await mediator.Send(new GetAllCategoriesQuery())).ToGenericResult())
                 .WithName("GetAllCategories");
 
             return group;
