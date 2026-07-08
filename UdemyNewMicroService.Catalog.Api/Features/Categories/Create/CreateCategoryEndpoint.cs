@@ -1,4 +1,5 @@
-﻿using UdemyNewMicroService.Shared.Filters;
+﻿using Asp.Versioning.Builder;
+using UdemyNewMicroService.Shared.Filters;
 
 namespace UdemyNewMicroService.Catalog.Api.Features.Categories.Create
 {
@@ -9,6 +10,7 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Categories.Create
             group.MapPost("/", async (CreateCategoryCommand command, IMediator mediator) => 
                 (await mediator.Send(command)).ToGenericResult())
                 .WithName("CreateCategory")
+                .MapToApiVersion(1,0)
                 .AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
 
             return group;

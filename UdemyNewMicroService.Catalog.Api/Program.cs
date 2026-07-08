@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOptionsExt();
 builder.Services.AddDatabaseServiceExt();
 builder.Services.AddCommonServiceExt(typeof(CatalogAssembly));
+builder.Services.AddVersionningExt();
 
 
 var app = builder.Build();
@@ -32,8 +33,8 @@ app.AddSeedDataExt().ContinueWith(x=>
     }
 }); //seed data için threadleri bloklamadan arka planda çalışma görevi burası
 
-app.AddCategoryGroupEndpointExt();
-app.AddCourseGroupEndpointExt();
+app.AddCategoryGroupEndpointExt(app.AddVersionSetExt());
+app.AddCourseGroupEndpointExt(app.AddVersionSetExt());
 
 if (app.Environment.IsDevelopment())
 {
