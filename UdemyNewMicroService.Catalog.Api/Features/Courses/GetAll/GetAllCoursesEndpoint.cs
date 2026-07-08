@@ -20,7 +20,7 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses.GetAll
                 course.Category = categories.FirstOrDefault(c => c.Id == course.CategoryId);
             }
 
-                var courseDtos = mapper.Map<List<CourseDto>>(courses);
+            var courseDtos = mapper.Map<List<CourseDto>>(courses);
             return ServiceResult<List<CourseDto>>.SuccessAsOk(courseDtos);
         }
     }
