@@ -26,14 +26,14 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.DeleteBasketItem
 
             var currentBasket = JsonSerializer.Deserialize<BasketDto>(basketAsString);
 
-            var basketItemToDelete = currentBasket.BasketItem.FirstOrDefault(i => i.Id == request.Id);
+            var basketItemToDelete = currentBasket.Items.FirstOrDefault(i => i.Id == request.Id);
 
             if (basketItemToDelete == null)
             {
                 return ServiceResult.Error("Item not found", HttpStatusCode.NotFound);
             }
 
-            currentBasket.BasketItem.Remove(basketItemToDelete);
+            currentBasket.Items.Remove(basketItemToDelete);
 
             basketAsString = JsonSerializer.Serialize(currentBasket);
             await distributedCache.SetStringAsync(cacheKey, basketAsString, cancellationToken);
