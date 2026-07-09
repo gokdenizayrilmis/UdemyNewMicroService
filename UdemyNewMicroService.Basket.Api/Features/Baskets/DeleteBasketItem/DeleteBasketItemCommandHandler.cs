@@ -26,7 +26,7 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.DeleteBasketItem
 
             var currentBasket = JsonSerializer.Deserialize<BasketDto>(basketAsString);
 
-            var basketItemToDelete = currentBasket.BasketItem.FirstOrDefault(i => i.Id == request.CourseId);
+            var basketItemToDelete = currentBasket.BasketItem.FirstOrDefault(i => i.Id == request.Id);
 
             if (basketItemToDelete == null)
             {

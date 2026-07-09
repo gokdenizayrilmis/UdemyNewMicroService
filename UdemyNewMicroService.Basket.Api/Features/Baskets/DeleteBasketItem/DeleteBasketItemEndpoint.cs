@@ -9,11 +9,10 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.DeleteBasketItem
     {
         public static RouteGroupBuilder DeleteBasketItemGroupItemEndpoint(this RouteGroupBuilder group)
         {
-            group.MapPost("/item", async ([FromBody]DeleteBasketItemCommand command, [FromServices] IMediator mediator) =>
-                (await mediator.Send(command)).ToGenericResult())
+            group.MapDelete("/item/{id:guid}", async (Guid id, IMediator mediator) =>
+                (await mediator.Send(new DeleteBasketItemCommand(id))).ToGenericResult())
                 .WithName("DeleteBasketItem")
-                .MapToApiVersion(1, 0)
-                .AddEndpointFilter<ValidationFilter<DeleteBasketItemCommandValidator>>();
+                .MapToApiVersion(1, 0);
 
             return group;
         }
