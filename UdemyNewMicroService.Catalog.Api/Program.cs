@@ -7,7 +7,7 @@ using UdemyNewMicroService.Catalog.Api.Features.Categories.Create;
 using UdemyNewMicroService.Catalog.Api.Features.Courses;
 using UdemyNewMicroService.Catalog.Api.Options;
 using UdemyNewMicroService.Catalog.Api.Repositories;
-using UdemyNewMicroService.Shared.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

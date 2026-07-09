@@ -14,7 +14,7 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.AddBasketItem
                 .MapToApiVersion(1, 0)
                 .AddEndpointFilter<ValidationFilter<AddBasketItemCommandValidator>>();
 
-            return group;adss
+            return group;
         }   
     }
 }
