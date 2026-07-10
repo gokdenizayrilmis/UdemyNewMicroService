@@ -23,7 +23,7 @@ namespace UdemyNewMicroService.Shared.Extensions
             services.AddValidatorsFromAssemblyContaining(assembly);
             services.AddScoped<IIdentityService, IdentityServiceFake>();
 
-            services.AddAutoMapper(assembly);
+            services.AddAutoMapper(config => config.AddMaps(assembly));
             return services;
 
         }
