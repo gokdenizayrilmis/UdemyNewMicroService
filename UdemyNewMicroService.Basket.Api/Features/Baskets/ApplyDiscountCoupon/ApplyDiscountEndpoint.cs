@@ -1,0 +1,21 @@
+﻿using MediatR;
+using UdemyNewMicroService.Basket.Api.Features.Baskets.AddBasketItem;
+using UdemyNewMicroService.Shared.Extensions;
+using UdemyNewMicroService.Shared.Filters;
+
+namespace UdemyNewMicroService.Basket.Api.Features.Baskets.ApplyDiscountCoupon
+{
+    public static class ApplyDiscountEndpoint
+    {
+        public static RouteGroupBuilder ApplyDiscountCouponGroupItemEndpointExt(this RouteGroupBuilder group)
+        {
+            group.MapPut("/apply-discount-rate", async (ApplyDiscountCouponCommand command, IMediator mediator) =>
+                (await mediator.Send(command)).ToGenericResult())
+                .WithName("ApplyDiscountRate")
+                .MapToApiVersion(1, 0)
+                .AddEndpointFilter<ValidationFilter<ApplyDiscountCouponCommandValidator>>();
+
+            return group;
+        }
+    }
+}
