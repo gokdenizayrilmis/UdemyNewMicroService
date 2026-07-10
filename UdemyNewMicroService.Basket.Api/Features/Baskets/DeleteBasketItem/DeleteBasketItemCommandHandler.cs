@@ -24,9 +24,9 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.DeleteBasketItem
                 return ServiceResult.Error("Basket not found", HttpStatusCode.NotFound);
             }
 
-            var currentBasket = JsonSerializer.Deserialize<BasketDto>(basketAsString);
+            var currentBasket = JsonSerializer.Deserialize<Data.Basket>(basketAsString);
 
-            var basketItemToDelete = currentBasket.Items.FirstOrDefault(i => i.Id == request.Id);
+            var basketItemToDelete = currentBasket!.Items.FirstOrDefault(i => i.Id == request.Id);
 
             if (basketItemToDelete == null)
             {
