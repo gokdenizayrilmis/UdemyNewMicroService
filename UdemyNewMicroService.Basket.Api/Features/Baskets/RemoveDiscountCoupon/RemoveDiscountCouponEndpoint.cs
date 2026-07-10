@@ -41,8 +41,8 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.RemoveDiscountCoupon
     {
         public static RouteGroupBuilder RemoveDiscountCouponGroupItemEndpointExt(this RouteGroupBuilder group)
         {
-            group.MapDelete("/remove-discount-coupon", async (RemoveDiscountCouponCommand command, IMediator mediator) =>
-                (await mediator.Send(command)).ToGenericResult())
+            group.MapDelete("/remove-discount-coupon", async (IMediator mediator) =>
+                (await mediator.Send(new RemoveDiscountCouponCommand())).ToGenericResult())
                 .WithName("RemoveDiscountCoupon")
                 .MapToApiVersion(1, 0);
                 
