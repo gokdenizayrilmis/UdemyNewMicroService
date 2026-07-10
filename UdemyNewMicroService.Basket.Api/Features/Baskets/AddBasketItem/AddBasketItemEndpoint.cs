@@ -6,7 +6,7 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.AddBasketItem
 {
     public static class AddBasketItemEndpoint
     {
-        public static RouteGroupBuilder AddBasketItemGroupEndpointExt(this RouteGroupBuilder group)
+        public static RouteGroupBuilder AddBasketGroupItemEndpointExt(this RouteGroupBuilder group)
         {
             group.MapPost("/item", async (AddBasketItemCommand command, IMediator mediator) =>
                 (await mediator.Send(command)).ToGenericResult())

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 using UdemyNewMicroService.Basket.Api.Const;
+using UdemyNewMicroService.Basket.Api.Data;
 using UdemyNewMicroService.Basket.Api.DTOs;
 using UdemyNewMicroService.Shared;
 using UdemyNewMicroService.Shared.Services;
@@ -17,21 +18,21 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.AddBasketItem
 
             var basketAsString = await distributedCache.GetStringAsync(cacheKey, cancellationToken);
 
-            BasketDto? currentBasket;
+            Data.Basket? currentBasket;
 
-            var newBasketItem = new BasketItemDto(request.CourseId, request.CourseName, request.ImageUrl, request.CoursePrice, null);
+            var newBasketItem = new BasketItem(request.CourseId, request.CourseName, request.ImageUrl, request.CoursePrice, null);
 
             if (string.IsNullOrEmpty(basketAsString))
             {
-                currentBasket = new BasketDto(UserId, [newBasketItem]);
+                currentBasket = new Data.Basket(UserId, [newBasketItem]);
 
                 await CreateCacheAsync(currentBasket, cacheKey, cancellationToken);
                 return ServiceResult.SuccessAsNoContent();
             } 
             
-            currentBasket = JsonSerializer.Deserialize<BasketDto>(basketAsString);
+            currentBasket = JsonSerializer.Deserialize<Data.Basket>(basketAsString);
 
-            var existingItem = currentBasket.Items.FirstOrDefault(i => i.Id == newBasketItem.Id);
+            var existingItem = currentBasket!.Items.FirstOrDefault(i => i.Id == newBasketItem.Id);
 
             
             if (existingItem is not null)
@@ -46,7 +47,7 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.AddBasketItem
 
         }
 
-        private async Task CreateCacheAsync(BasketDto basket, string cacheKey, CancellationToken cancellationToken)
+        private async Task CreateCacheAsync(Data.Basket basket, string cacheKey, CancellationToken cancellationToken)
         {
             var basketAsString = JsonSerializer.Serialize(basket);
             await distributedCache.SetStringAsync(cacheKey, basketAsString, cancellationToken);
