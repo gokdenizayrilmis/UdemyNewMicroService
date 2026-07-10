@@ -12,7 +12,7 @@ using UdemyNewMicroService.Catalog.Api.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi(); 
 builder.Services.AddOptionsExt();
 builder.Services.AddDatabaseServiceExt();
 builder.Services.AddCommonServiceExt(typeof(CatalogAssembly));
@@ -38,10 +38,15 @@ app.AddCourseGroupEndpointExt(app.AddVersionSetExt());
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    // .NET 10'un /openapi/v1.json endpoint'ini aktif eder
+    app.MapOpenApi();
 
+    // Swagger UI'a yeni .json yolunu bildirir
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "UdemyNewMicroService.Catalog.Api v1");
+    });
+}
 
 
 app.Run();

@@ -5,7 +5,7 @@ using UdemyNewMicroService.Shared.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi();
 builder.Services.AddCommonServiceExt(typeof(BasketAssembly));
 builder.Services.AddScoped<BasketService>();
 builder.Services.AddVersionningExt();
@@ -17,13 +17,17 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    // .NET 10'un /openapi/v1.json endpoint'ini aktif eder
+    app.MapOpenApi();
 
+    // Swagger UI'a yeni .json yolunu bildirir
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "UdemyNewMicroService.Catalog.Api v1");
+    });
+}
 
 app.AddBasketGroupEndpointExt(app.AddVersionSetExt());
 
