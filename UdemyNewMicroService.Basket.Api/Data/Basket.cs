@@ -10,9 +10,9 @@ namespace UdemyNewMicroService.Basket.Api.Data
         public float? DiscountRate { get; set; }
         public string? Coupon { get; set; }
 
-        public bool IsApplyDiscount => DiscountRate is > 0 && !string.IsNullOrEmpty(Coupon);
-        public decimal TotalPrice => Items.Sum(x => x.Price);
-        public decimal? TotalPriceWithAppliedDiscount => !IsApplyDiscount ? null : Items.Sum(x => x.PriceByApplyDiscountRate);
+        [JsonIgnore] public bool IsApplyDiscount => DiscountRate is > 0 && !string.IsNullOrEmpty(Coupon);
+        [JsonIgnore] public decimal TotalPrice => Items.Sum(x => x.Price);
+        [JsonIgnore] public decimal? TotalPriceWithAppliedDiscount => !IsApplyDiscount ? null : Items.Sum(x => x.PriceByApplyDiscountRate);
         public Basket()
         {
             
@@ -36,6 +36,12 @@ namespace UdemyNewMicroService.Basket.Api.Data
 
         public void ApplyAvailableDiscount()
         {
+
+            if(!IsApplyDiscount)
+            {
+                return;
+            }
+
             foreach (var basket in Items)
             {
                 basket.PriceByApplyDiscountRate = basket.Price * (decimal)(1 - DiscountRate!);
