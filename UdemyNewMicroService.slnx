@@ -7,6 +7,9 @@
   <Folder Name="/src/services/catalog/">
     <Project Path="UdemyNewMicroService.Catalog.Api/UdemyNewMicroService.Catalog.Api.csproj" Id="a01d260c-c850-4d63-b444-ffb7e88fb758" />
   </Folder>
+  <Folder Name="/src/services/discount/">
+    <Project Path="UdemyNewMicroService.Discount.Api/UdemyNewMicroService.Discount.Api.csproj" Id="ec3f0230-3eeb-4903-bd13-2fdf97b56b17" />
+  </Folder>
   <Folder Name="/src/shared/">
     <Project Path="UdemyNewMicroService.Shared/UdemyNewMicroService.Shared.csproj" />
   </Folder>
