@@ -1,4 +1,5 @@
 using UdemyNewMicroService.Discount.Api;
+using UdemyNewMicroService.Discount.Api.Features.Discounts;
 using UdemyNewMicroService.Discount.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,8 @@ builder.Services.AddVersionningExt();
 
 var app = builder.Build();
 
+app.AddDiscountGroupEndpointExt(app.AddVersionSetExt());
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -28,9 +31,6 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/openapi/v1.json", "UdemyNewMicroService.Discount.Api v1");
     });
 }
-
-
-
 
 app.Run();
 
