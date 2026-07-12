@@ -7,6 +7,14 @@ namespace UdemyNewMicroService.Discount.Api.Features.Discounts.CreateDiscount
     {
         public async Task<ServiceResult> Handle(CreateDiscountCommand request, CancellationToken cancellationToken)
         {
+
+            var hasCodeForUser = await context.Discounts.AnyAsync(x => x.UserId == request.UserId && x.Code == request.Code);
+
+            if (hasCodeForUser) 
+            {
+                return ServiceResult.Error("Discount code already exists for this user.", HttpStatusCode.BadRequest);
+            }
+
             var discount = new Discount()
             {
                 Id = NewId.NextSequentialGuid(),
@@ -14,7 +22,7 @@ namespace UdemyNewMicroService.Discount.Api.Features.Discounts.CreateDiscount
                 Created = DateTime.UtcNow,
                 Expired = request.Expired,
                 Rate = request.Rate,
-                UserId = identityService.GetUserId
+                UserId = request.UserId
             };
 
             await context.Discounts.AddAsync(discount, cancellationToken);

@@ -1,9 +1,8 @@
-﻿using UdemyNewMicroService.Discount.Api.Features.Discounts.CreateDiscount;
-using UdemyNewMicroService.Shared.Filters;
+﻿using UdemyNewMicroService.Shared.Filters;
 
-namespace UdemyNewMicroService.Discount.Api.Features.Discounts
+namespace UdemyNewMicroService.Discount.Api.Features.Discounts.CreateDiscount
 {
-    public static class CreateDiscountCommandEndpoint
+    public static class GetDiscountByCodeCommandEndpoint
     {
         public static RouteGroupBuilder CreateDiscountGroupItemEndpoint(this RouteGroupBuilder group)
         {

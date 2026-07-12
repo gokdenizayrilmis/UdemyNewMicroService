@@ -1,5 +1,6 @@
 using UdemyNewMicroService.Discount.Api;
 using UdemyNewMicroService.Discount.Api.Features.Discounts;
+using UdemyNewMicroService.Discount.Api.Options;
 using UdemyNewMicroService.Discount.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDatabaseServiceExt();
+var mongoOption = builder.Configuration.GetSection("MongoOption").Get<MongoOption>();
+builder.Services.AddSingleton(mongoOption);
 builder.Services.AddCommonServiceExt(typeof(DiscountAssembly));
 builder.Services.AddVersionningExt();
 
