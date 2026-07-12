@@ -1,12 +1,15 @@
 using UdemyNewMicroService.Discount.Api;
+using UdemyNewMicroService.Discount.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDatabaseServiceExt();
 builder.Services.AddCommonServiceExt(typeof(DiscountAssembly));
 builder.Services.AddVersionningExt();
+
 
 
 
@@ -22,7 +25,7 @@ if (app.Environment.IsDevelopment())
     // Swagger UI'a yeni .json yolunu bildirir
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/openapi/v1.json", "UdemyNewMicroService.Catalog.Api v1");
+        options.SwaggerEndpoint("/openapi/v1.json", "UdemyNewMicroService.Discount.Api v1");
     });
 }
 
