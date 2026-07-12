@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning.Builder;
+using UdemyNewMicroService.File.Api.Features.File.Delete;
 using UdemyNewMicroService.File.Api.Features.File.Upload;
 
 namespace UdemyNewMicroService.File.Api.Features.File
@@ -10,7 +11,8 @@ namespace UdemyNewMicroService.File.Api.Features.File
             app.MapGroup("api/v{version:apiVersion}/files")
                 .WithTags("Files")
                 .WithApiVersionSet(apiVersionSet)
-                .UploadFileGroupItemEndpoint();
+                .UploadFileGroupItemEndpoint()
+                .DeleteFileGroupItemEndpoint();
         }
     }
 }
