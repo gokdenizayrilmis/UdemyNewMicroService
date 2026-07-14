@@ -13,6 +13,17 @@
   <Folder Name="/src/services/file/">
     <Project Path="UdemyNewMicroService.File.Api/UdemyNewMicroService.File.Api.csproj" Id="fff35f67-46c4-4161-8c59-c72612166575" />
   </Folder>
+  <Folder Name="/src/services/order/" />
+  <Folder Name="/src/services/order/api/">
+    <Project Path="UdemyNewMicroService.Order.Api/UdemyNewMicroService.Order.Api.csproj" Id="33eab9f7-b707-41ce-81a1-96234c3da52d" />
+  </Folder>
+  <Folder Name="/src/services/order/core/">
+    <Project Path="UdemyNewMicroService.Order.Application/UdemyNewMicroService.Order.Application.csproj" Id="cc155c3d-65b1-4136-a892-a52e58584d78" />
+    <Project Path="UdemyNewMicroService.Order.Domain/UdemyNewMicroService.Order.Domain.csproj" Id="fb7b1ff4-f7bc-44e7-93c9-a797a8292f6f" />
+  </Folder>
+  <Folder Name="/src/services/order/infrastructure/">
+    <Project Path="../UdemyNewMicroService.Order.Persistence/UdemyNewMicroService.Order.Persistence.csproj" Id="37dd3864-732f-461b-8972-c750353b2570" />
+  </Folder>
   <Folder Name="/src/shared/">
     <Project Path="UdemyNewMicroService.Shared/UdemyNewMicroService.Shared.csproj" />
   </Folder>
