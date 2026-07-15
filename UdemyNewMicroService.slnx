@@ -22,7 +22,7 @@
     <Project Path="UdemyNewMicroService.Order.Domain/UdemyNewMicroService.Order.Domain.csproj" Id="fb7b1ff4-f7bc-44e7-93c9-a797a8292f6f" />
   </Folder>
   <Folder Name="/src/services/order/infrastructure/">
-    <Project Path="../UdemyNewMicroService.Order.Persistence/UdemyNewMicroService.Order.Persistence.csproj" Id="37dd3864-732f-461b-8972-c750353b2570" />
+    <Project Path="UdemyNewMicroService.Order.Persistence/UdemyNewMicroService.Order.Persistence.csproj" />
   </Folder>
   <Folder Name="/src/shared/">
     <Project Path="UdemyNewMicroService.Shared/UdemyNewMicroService.Shared.csproj" />
