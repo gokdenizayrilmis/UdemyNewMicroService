@@ -10,7 +10,7 @@ namespace UdemyNewMicroService.Discount.Api.Features.Discounts.CreateDiscount
                 (await mediator.Send(command)).ToGenericResult())
                 .WithName("CreateDiscount")
                 .MapToApiVersion(1, 0)
-                .AddEndpointFilter<ValidationFilter<CreateDiscountCommandValidator>>();
+                .AddEndpointFilter<ValidationFilter<CreateDiscountCommand>>();
 
             return group;
         }

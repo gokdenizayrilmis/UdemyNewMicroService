@@ -9,7 +9,7 @@ namespace UdemyNewMicroService.Order.Application.Features.Orders.Create
     {
         public CreateOrderCommandValidator() 
         {
-            RuleFor(x => x.DiscountRate).NotNull().GreaterThanOrEqualTo(0).WithMessage("Discount rate must be greater than or equal to 0.");
+            RuleFor(x => x.DiscountRate).NotNull().GreaterThan(0).WithMessage("Discount rate must be greater than or equal to 0.");
             RuleFor(x => x.Address).NotNull().WithMessage("Address is required.").SetValidator(new AddressDtoValidator());
             RuleFor(x => x.Payment).NotNull().WithMessage("Payment is required.").SetValidator(new PaymentDtoValidator());
             RuleForEach(x => x.Items).NotNull().WithMessage("Items are required.").SetValidator(new OrderItemDtoValidator());

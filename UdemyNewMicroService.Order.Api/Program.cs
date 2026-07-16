@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using UdemyNewMicroService.Order.Api;
 using UdemyNewMicroService.Order.Api.Endpoints.Orders;
+using UdemyNewMicroService.Order.Application;
 using UdemyNewMicroService.Order.Application.Contracts.Repositories;
 using UdemyNewMicroService.Order.Application.Contracts.UnitOfWorks;
 using UdemyNewMicroService.Order.Persistence;
@@ -14,7 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<AppDbContext>(options => 
 {   options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")); });
-
+builder.Services.AddCommonServiceExt(typeof(OrderApplicationAssembly));
 builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
 builder.Services.AddVersionningExt();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();

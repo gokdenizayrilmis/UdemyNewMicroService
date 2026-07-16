@@ -14,7 +14,7 @@ namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
                 (await mediator.Send(command)).ToGenericResult())
                 .WithName("CreateOrder")
                 .MapToApiVersion(1, 0)
-                .AddEndpointFilter<ValidationFilter<CreateOrderCommandValidator>>();
+                .AddEndpointFilter<ValidationFilter<CreateOrderCommand>>();
 
             return group;
         }
