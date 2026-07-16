@@ -13,8 +13,8 @@ namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
             group.MapPost("/", async ([FromBody]CreateOrderCommand command, [FromServices]IMediator mediator) =>
                 (await mediator.Send(command)).ToGenericResult())
                 .WithName("CreateOrder")
-                .MapToApiVersion(1, 0);
-                //.AddEndpointFilter<ValidationFilter<CreateOrderCommand>>();
+                .MapToApiVersion(1, 0)
+                .AddEndpointFilter<ValidationFilter<CreateOrderCommandValidator>>();
 
             return group;
         }
