@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using UdemyNewMicroService.Order.Domain.Entities;
 
-namespace UdemyNewMicroService.Order.Application.Contracts
+namespace UdemyNewMicroService.Order.Application.Contracts.Repositories
 {
-    public interface IGenericRepository<TId,TEntity> where TEntity : class where TId : struct
+    public interface IGenericRepository<TId,TEntity> where TId : struct where TEntity : BaseEntity<TId>
     {
         public Task<bool> AnyAsync(TId id);
         public Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
@@ -13,8 +14,8 @@ namespace UdemyNewMicroService.Order.Application.Contracts
         Task<List<TEntity>> GetAllPagedAsync(int pageNumber, int pageSize);
         ValueTask<TEntity> GetByIdAsync(TId id);
         ValueTask AddAsync(TEntity entity);
-        void AddR(TEntity entity);
+        void Add(TEntity entity);
         void Update(TEntity entity);
-        void Delete(TEntity entity);
+        void Remove(TEntity entity);
     }
 }

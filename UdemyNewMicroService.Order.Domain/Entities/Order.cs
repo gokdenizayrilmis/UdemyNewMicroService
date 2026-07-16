@@ -31,7 +31,7 @@ namespace UdemyNewMicroService.Order.Domain.Entities
             return orderCode.ToString();
         }
 
-        public static Order CreateUnPaid(Guid buyerId, int addressId, float? discountRate)
+        public static Order CreateUnPaidOrder(Guid buyerId, float? discountRate, int addressId)
         {
             return new Order
             {
@@ -41,6 +41,20 @@ namespace UdemyNewMicroService.Order.Domain.Entities
                 Created = DateTime.UtcNow,
                 Status = OrderStatus.WaitingForPayment,
                 AddressId = addressId,
+                TotalPrice = 0, // This would be calculated based on order items and discount
+                PaymentId = Guid.Empty
+            };
+        }
+
+        public static Order CreateUnPaidOrder(Guid buyerId, float? discountRate)
+        {
+            return new Order
+            {
+                Id = NewId.NextGuid(),
+                Code = GenerateCode(),
+                BuyerId = buyerId,
+                Created = DateTime.UtcNow,
+                Status = OrderStatus.WaitingForPayment,
                 TotalPrice = 0, // This would be calculated based on order items and discount
                 PaymentId = Guid.Empty
             };
