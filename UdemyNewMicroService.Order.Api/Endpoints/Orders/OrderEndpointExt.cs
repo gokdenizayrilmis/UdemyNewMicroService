@@ -9,7 +9,8 @@ namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
             app.MapGroup("api/v{version:apiVersion}/orders")
                 .WithTags("Orders")
                 .WithApiVersionSet(apiVersionSet)
-                .CreateOrderGroupItemEndpoint();
+                .CreateOrderGroupItemEndpoint()
+                .GetOrdersGroupItemEndpoint();
         }
     }
 }

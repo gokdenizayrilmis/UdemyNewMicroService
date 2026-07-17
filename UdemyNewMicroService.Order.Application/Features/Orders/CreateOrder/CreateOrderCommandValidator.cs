@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UdemyNewMicroService.Order.Application.Features.Orders.Create
+namespace UdemyNewMicroService.Order.Application.Features.Orders.CreateOrder
 {
     public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
     {

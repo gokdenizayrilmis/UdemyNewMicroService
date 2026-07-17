@@ -19,6 +19,10 @@ namespace UdemyNewMicroService.Order.Persistence.UnitOfWork
         {
             return context.Database.CommitTransactionAsync(cancellationToken);
         }
+        public Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            return context.Database.RollbackTransactionAsync(cancellationToken);
+        }
 
     }
 }

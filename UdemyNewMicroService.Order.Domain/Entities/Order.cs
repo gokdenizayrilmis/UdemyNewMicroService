@@ -63,17 +63,21 @@ namespace UdemyNewMicroService.Order.Domain.Entities
         public void AddOrderItem(Guid productId, string productname, decimal unitPrice)
         {
             var orderItem = new OrderItem();
+
+            if (DiscountRate.HasValue)
+            {
+                unitPrice -= unitPrice * (decimal)DiscountRate.Value / 100;
+            }
+
             orderItem.SetItem(productId, productname, unitPrice);
             OrderItems.Add(orderItem);
+
+            CalculateTotalPrice();
         }
 
         private void CalculateTotalPrice()
         {
             TotalPrice = OrderItems.Sum(x => x.UnitPrice);
-            if(DiscountRate.HasValue)
-            {
-                TotalPrice -= TotalPrice * (decimal)DiscountRate.Value / 100;
-            }
         }
 
         public void ApplyDiscount(float discountRate)
