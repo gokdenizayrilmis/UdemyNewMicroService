@@ -24,6 +24,9 @@
   <Folder Name="/src/services/order/infrastructure/">
     <Project Path="UdemyNewMicroService.Order.Persistence/UdemyNewMicroService.Order.Persistence.csproj" />
   </Folder>
+  <Folder Name="/src/services/payment/">
+    <Project Path="UdemyNewMicroService.Payment.Api/UdemyNewMicroService.Payment.Api.csproj" Id="0e30601e-129f-4a38-bbd5-f81b6278c82a" />
+  </Folder>
   <Folder Name="/src/shared/">
     <Project Path="UdemyNewMicroService.Shared/UdemyNewMicroService.Shared.csproj" />
   </Folder>
