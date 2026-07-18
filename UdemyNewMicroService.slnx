@@ -13,6 +13,9 @@
   <Folder Name="/src/services/file/">
     <Project Path="UdemyNewMicroService.File.Api/UdemyNewMicroService.File.Api.csproj" Id="fff35f67-46c4-4161-8c59-c72612166575" />
   </Folder>
+  <Folder Name="/src/services/gateway/">
+    <Project Path="UdemyNewMicroService.Gateway/UdemyNewMicroService.Gateway.csproj" Id="c4a7d255-3990-44a1-b598-5222921ca1c1" />
+  </Folder>
   <Folder Name="/src/services/order/" />
   <Folder Name="/src/services/order/api/">
     <Project Path="UdemyNewMicroService.Order.Api/UdemyNewMicroService.Order.Api.csproj" Id="33eab9f7-b707-41ce-81a1-96234c3da52d" />
