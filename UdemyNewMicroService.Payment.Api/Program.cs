@@ -15,7 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseInMemoryDatabase("payment-in-memory-db"); 
 });
 
-
+builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration);
 
 var app = builder.Build();
 
@@ -34,5 +34,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();

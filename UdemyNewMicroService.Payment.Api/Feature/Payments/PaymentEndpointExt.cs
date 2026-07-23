@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning.Builder;
-using UdemyNewMicroService.Payment.Api.Features.GetAllPaymentsByUserId;
+using UdemyNewMicroService.Payment.Api.Feature.Payments.GetAllPaymentsByUserId;
 using UdemyNewMicroService.Payment.Api.Features.Payments.Create;
 
 namespace UdemyNewMicroService.Payment.Api.Features.Payment
@@ -12,7 +12,7 @@ namespace UdemyNewMicroService.Payment.Api.Features.Payment
                 .WithTags("Payments")
                 .WithApiVersionSet(apiVersionSet)
                 .CreatePaymentGroupItemEndpoint()
-                .GetAllPaymentByUserIdGroupItemEndpoint();
+                .GetAllPaymentByUserIdGroupItemEndpoint().RequireAuthorization();
         }
     }
 }

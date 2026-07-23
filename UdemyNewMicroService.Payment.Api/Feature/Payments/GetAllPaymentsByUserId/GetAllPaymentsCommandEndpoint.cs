@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using UdemyNewMicroService.Payment.Api.Feature.GetAllPaymentsByUserId;
 using UdemyNewMicroService.Shared.Extensions;
 
-namespace UdemyNewMicroService.Payment.Api.Features.GetAllPaymentsByUserId
+namespace UdemyNewMicroService.Payment.Api.Feature.Payments.GetAllPaymentsByUserId
 {
     public static class GetAllPaymentsCommandEndpoint
     {

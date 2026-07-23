@@ -4,7 +4,7 @@ using UdemyNewMicroService.Payment.Api.Repositories;
 using UdemyNewMicroService.Shared;
 using UdemyNewMicroService.Shared.Services;
 
-namespace UdemyNewMicroService.Payment.Api.Feature.GetAllPaymentsByUserId
+namespace UdemyNewMicroService.Payment.Api.Feature.Payments.GetAllPaymentsByUserId
 {
     public class GetAllPaymentsByUserIdQueryHandler(AppDbContext context, IIdentityService identityService) : IRequestHandler<GetAllPaymentsByUserIdQuery, ServiceResult<List<GetAllPaymentsByUserIdResponse>>>
     {
