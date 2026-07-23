@@ -14,9 +14,7 @@ builder.Services.AddSingleton(mongoOption);
 builder.Services.AddCommonServiceExt(typeof(DiscountAssembly));
 builder.Services.AddVersionningExt();
 
-
-
-
+builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration);
 
 var app = builder.Build();
 
@@ -34,6 +32,9 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/openapi/v1.json", "UdemyNewMicroService.Discount.Api v1");
     });
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 
