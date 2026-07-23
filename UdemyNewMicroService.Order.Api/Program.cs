@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using UdemyNewMicroService.Order.Api;
 using UdemyNewMicroService.Order.Api.Endpoints.Orders;
 using UdemyNewMicroService.Order.Application;
 using UdemyNewMicroService.Order.Application.Contracts.Repositories;
@@ -22,10 +21,7 @@ builder.Services.AddVersionningExt();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
-
-
-
+builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration);
 
 var app = builder.Build();
 
@@ -43,6 +39,9 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/openapi/v1.json", "UdemyNewMicroService.Order.Api v1");
     });
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 
