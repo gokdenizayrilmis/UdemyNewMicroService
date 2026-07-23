@@ -12,7 +12,7 @@ namespace UdemyNewMicroService.File.Api.Features.File
                 .WithTags("Files")
                 .WithApiVersionSet(apiVersionSet)
                 .UploadFileGroupItemEndpoint()
-                .DeleteFileGroupItemEndpoint();
+                .DeleteFileGroupItemEndpoint().RequireAuthorization();
         }
     }
 }
