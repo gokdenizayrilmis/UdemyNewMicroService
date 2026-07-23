@@ -10,7 +10,7 @@ namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
                 .WithTags("Orders")
                 .WithApiVersionSet(apiVersionSet)
                 .CreateOrderGroupItemEndpoint()
-                .GetOrdersGroupItemEndpoint();
+                .GetOrdersGroupItemEndpoint().RequireAuthorization();
         }
     }
 }
