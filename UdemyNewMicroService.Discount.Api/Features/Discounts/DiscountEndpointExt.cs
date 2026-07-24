@@ -12,7 +12,7 @@ namespace UdemyNewMicroService.Discount.Api.Features.Discounts
                 .WithTags("Discounts")
                 .WithApiVersionSet(apiVersionSet)
                 .CreateDiscountGroupItemEndpoint()
-                .GetDiscountByCodeGroupItemEndpoint().RequireAuthorization();
+                .GetDiscountByCodeGroupItemEndpoint().RequireAuthorization("Password");
         }
     }
 }

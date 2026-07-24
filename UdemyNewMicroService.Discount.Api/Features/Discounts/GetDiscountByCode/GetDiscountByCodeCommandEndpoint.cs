@@ -9,7 +9,7 @@ namespace UdemyNewMicroService.Discount.Api.Features.Discounts.GetDiscountByCode
             group.MapGet("/{code}", async (string code, IMediator mediator) =>
                 (await mediator.Send(new GetDiscountByCodeQuery(code))).ToGenericResult())
                 .WithName("GetDiscountByCode")
-                .MapToApiVersion(1, 0);
+                .MapToApiVersion(1, 0).RequireAuthorization("Password");
 
             return group;
         }
