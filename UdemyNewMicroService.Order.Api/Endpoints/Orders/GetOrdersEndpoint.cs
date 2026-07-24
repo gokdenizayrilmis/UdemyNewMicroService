@@ -11,7 +11,7 @@ namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
             group.MapGet("/", async (IMediator mediator) =>
                 (await mediator.Send(new GetOrdersQuery())).ToGenericResult())
                 .WithName("GetOrders")
-                .MapToApiVersion(1, 0);
+                .MapToApiVersion(1, 0).RequireAuthorization("Password");
 
             return group;
         }
