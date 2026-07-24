@@ -5,12 +5,10 @@ using UdemyNewMicroService.Shared.Services;
 
 namespace UdemyNewMicroService.Payment.Api.Feature.Payments.Create
 {
-    public class CreatePaymentCommandHandler(AppDbContext appDbContext, IIdentityService identityService, IHttpContextAccessor httpContextAccessor) : IRequestHandler<CreatePaymentCommand, ServiceResult<Guid>>
+    public class CreatePaymentCommandHandler(AppDbContext appDbContext, IIdentityService identityService) : IRequestHandler<CreatePaymentCommand, ServiceResult<Guid>>
     {
         public async Task<ServiceResult<Guid>> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
         {
-            var claims = httpContextAccessor.HttpContext.User.Claims;
-
             var (isSuccess, errorMessage) = await ExternalPaymentProcessAsync(request.CardNumber, request.CardHolderName, request.CardExpirationDate, request.CardSecurityNumber, request.Amount);
 
             if (!isSuccess)

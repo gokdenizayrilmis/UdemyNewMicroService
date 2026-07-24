@@ -10,7 +10,7 @@ namespace UdemyNewMicroService.Payment.Api.Feature.Payments.GetAllPaymentsByUser
             group.MapGet("/", async (IMediator mediator) =>
                 (await mediator.Send(new GetAllPaymentsByUserIdQuery())).ToGenericResult())
                 .WithName("get-all-payments-by-userid")
-                .MapToApiVersion(1, 0).RequireAuthorization("ClientCredential");
+                .MapToApiVersion(1, 0).RequireAuthorization("Password");
 
             return group;
         }

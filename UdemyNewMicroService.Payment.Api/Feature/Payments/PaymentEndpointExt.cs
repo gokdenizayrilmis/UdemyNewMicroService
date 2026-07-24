@@ -12,7 +12,7 @@ namespace UdemyNewMicroService.Payment.Api.Features.Payment
                 .WithTags("Payments")
                 .WithApiVersionSet(apiVersionSet)
                 .CreatePaymentGroupItemEndpoint()
-                .GetAllPaymentByUserIdGroupItemEndpoint().RequireAuthorization();
+                .GetAllPaymentByUserIdGroupItemEndpoint().RequireAuthorization("Password");
         }
     }
 }
