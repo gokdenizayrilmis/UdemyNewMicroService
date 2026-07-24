@@ -10,7 +10,7 @@ namespace UdemyNewMicroService.Payment.Api.Feature.Payments.GetAllPaymentsByUser
     {
         public async Task<ServiceResult<List<GetAllPaymentsByUserIdResponse>>> Handle(GetAllPaymentsByUserIdQuery request, CancellationToken cancellationToken)
         {
-            var userId = identityService.GetUserId;
+            var userId = identityService.UserId;
 
             var payments = await context.Payments
                 .Where(p => p.UserId == userId)

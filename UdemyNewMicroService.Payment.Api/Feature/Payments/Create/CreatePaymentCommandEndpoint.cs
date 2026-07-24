@@ -11,7 +11,7 @@ namespace UdemyNewMicroService.Payment.Api.Features.Payments.Create
             group.MapPost("/", async (CreatePaymentCommand command, IMediator mediator) =>
                 (await mediator.Send(command)).ToGenericResult())
                 .WithName("create")
-                .MapToApiVersion(1, 0);
+                .MapToApiVersion(1, 0).RequireAuthorization("Password");
 
             return group;
         }

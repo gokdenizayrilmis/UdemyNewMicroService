@@ -11,7 +11,7 @@ namespace UdemyNewMicroService.Order.Application.Features.Orders.GetOrder
     {
         public async Task<ServiceResult<List<GetOrdersResponse>>> Handle(GetOrdersQuery request, CancellationToken cancellationToken)
         {
-            var orders = await orderRepository.GetOrderByBuyerId(identityService.GetUserId);
+            var orders = await orderRepository.GetOrderByBuyerId(identityService.UserId);
 
             var response = orders.Select(x => new GetOrdersResponse(x.Created, x.TotalPrice, mapper.Map<List<OrderItemDto>>(x.OrderItems))).ToList();
             

@@ -21,7 +21,7 @@ namespace UdemyNewMicroService.Shared.Extensions
 
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining(assembly);
-            services.AddScoped<IIdentityService, IdentityServiceFake>();
+            services.AddScoped<IIdentityService, IdentityService>();
 
             services.AddAutoMapper(config => config.AddMaps(assembly));
             return services;

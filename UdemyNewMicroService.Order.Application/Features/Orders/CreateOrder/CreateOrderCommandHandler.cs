@@ -34,7 +34,7 @@ namespace UdemyNewMicroService.Order.Application.Features.Orders.CreateOrder
                 addressRepository.Add(newAddress);
 
                 // 3. Siparişi oluşturuyoruz
-                var order = Domain.Entities.Order.CreateUnPaidOrder(identityService.GetUserId, request.DiscountRate, newAddress.Id);
+                var order = Domain.Entities.Order.CreateUnPaidOrder(identityService.UserId, request.DiscountRate, newAddress.Id);
 
                 foreach (var orderItem in request.Items)
                 {

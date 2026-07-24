@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Text;
 using UdemyNewMicroService.Shared.Options;
 using UdemyNewMicroService.Shared.Services;
@@ -31,11 +32,51 @@ namespace UdemyNewMicroService.Shared.Extensions
                     ValidateAudience = true,
                     ValidateIssuerSigningKey = true,
                     ValidateIssuer = true,
+                    ValidateLifetime = true,
+                    RoleClaimType = "roles",
+                    NameClaimType = "preferred_username"
+                };
+
+            }).AddJwtBearer("ClientCredentialSchema", options =>
+            {
+                options.Authority = identityOptions.Address;
+                options.Audience = identityOptions.Audience;
+                options.RequireHttpsMetadata = false;
+
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
                     ValidateLifetime = true
                 };
             });
 
-            services.AddAuthorization();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("x", policy =>
+                {
+                    policy.AuthenticationSchemes.Add("JwtBearerDefaults.AuthenticationScheme");
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim(ClaimTypes.Email);
+                    policy.RequireClaim("client_id");
+                });
+               
+                options.AddPolicy("Password", policy =>
+                {
+                    policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim(ClaimTypes.Email);
+                });
+
+                options.AddPolicy("ClientCredential", policy =>
+                {
+                    policy.AuthenticationSchemes.Add("ClientCredentialSchema");
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("client_id");
+                });
+
+            });
 
             return services;
 
