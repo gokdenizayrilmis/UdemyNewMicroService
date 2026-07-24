@@ -12,7 +12,7 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.DeleteBasketItem
             group.MapDelete("/item/{id:guid}", async (Guid id, IMediator mediator) =>
                 (await mediator.Send(new DeleteBasketItemCommand(id))).ToGenericResult())
                 .WithName("DeleteBasketItem")
-                .MapToApiVersion(1, 0);
+                .MapToApiVersion(1, 0).RequireAuthorization("Password");
 
             return group;
         }

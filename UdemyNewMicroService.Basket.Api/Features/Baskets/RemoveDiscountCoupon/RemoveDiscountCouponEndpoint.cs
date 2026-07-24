@@ -43,8 +43,8 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.RemoveDiscountCoupon
             group.MapDelete("/remove-discount-coupon", async (IMediator mediator) =>
                 (await mediator.Send(new RemoveDiscountCouponCommand())).ToGenericResult())
                 .WithName("RemoveDiscountCoupon")
-                .MapToApiVersion(1, 0);
-                
+                .MapToApiVersion(1, 0).RequireAuthorization("Password");
+
 
             return group;
         }

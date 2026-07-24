@@ -12,7 +12,7 @@ namespace UdemyNewMicroService.Basket.Api.Features.Baskets.GetBasket
             group.MapGet("/user", async (IMediator mediator) =>
                 (await mediator.Send(new GetBasketQuery())).ToGenericResult())
                 .WithName("GetBasket")
-                .MapToApiVersion(1, 0);
+                .MapToApiVersion(1, 0).RequireAuthorization("Password");
 
             return group;
         }
