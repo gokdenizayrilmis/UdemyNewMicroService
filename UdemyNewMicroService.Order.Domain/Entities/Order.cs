@@ -1,7 +1,4 @@
-﻿using MassTransit;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace UdemyNewMicroService.Order.Domain.Entities
 {
@@ -35,7 +32,7 @@ namespace UdemyNewMicroService.Order.Domain.Entities
         {
             return new Order
             {
-                Id = NewId.NextGuid(),
+                Id = Guid.CreateVersion7(),
                 Code = GenerateCode(),
                 BuyerId = buyerId,
                 Created = DateTime.UtcNow,
@@ -50,7 +47,7 @@ namespace UdemyNewMicroService.Order.Domain.Entities
         {
             return new Order
             {
-                Id = NewId.NextGuid(),
+                Id = Guid.CreateVersion7(),
                 Code = GenerateCode(),
                 BuyerId = buyerId,
                 Created = DateTime.UtcNow,

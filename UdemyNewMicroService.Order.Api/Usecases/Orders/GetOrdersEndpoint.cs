@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using UdemyNewMicroService.Order.Application.Features.Orders.GetOrder;
+using UdemyNewMicroService.Order.Application.Usecases.Orders.GetOrder;
 using UdemyNewMicroService.Shared.Extensions;
 
-namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
+namespace UdemyNewMicroService.Order.Api.Usecases.Orders
 {
     public static class GetOrdersEndpoint
     {

@@ -5,7 +5,7 @@ using UdemyNewMicroService.Order.Domain.Entities;
 using UdemyNewMicroService.Shared;
 using UdemyNewMicroService.Shared.Services;
 
-namespace UdemyNewMicroService.Order.Application.Features.Orders.CreateOrder
+namespace UdemyNewMicroService.Order.Application.Usecases.Orders.CreateOrder
 {
     public class CreateOrderCommandHandler(IOrderRepository orderRepository, 
         IGenericRepository<int, Address> addressRepository, IIdentityService identityService, IUnitOfWork unitOfWork) : IRequestHandler<CreateOrderCommand, ServiceResult>

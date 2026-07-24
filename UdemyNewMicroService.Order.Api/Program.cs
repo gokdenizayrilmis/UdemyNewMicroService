@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using UdemyNewMicroService.Order.Api.Endpoints.Orders;
+using UdemyNewMicroService.Order.Api.Usecases.Orders;
 using UdemyNewMicroService.Order.Application;
 using UdemyNewMicroService.Order.Application.Contracts.Repositories;
 using UdemyNewMicroService.Order.Application.Contracts.UnitOfWorks;

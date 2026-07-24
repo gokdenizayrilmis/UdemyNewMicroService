@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UdemyNewMicroService.Bus\UdemyNewMicroService.Bus.csproj" />
     <ProjectReference Include="..\UdemyNewMicroService.Shared\UdemyNewMicroService.Shared.csproj" />
   </ItemGroup>
 

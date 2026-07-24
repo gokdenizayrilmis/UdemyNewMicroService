@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using UdemyNewMicroService.Order.Application.Features.Orders.CreateOrder;
+using UdemyNewMicroService.Order.Application.Usecases.Orders.CreateOrder;
 using UdemyNewMicroService.Shared.Extensions;
 using UdemyNewMicroService.Shared.Filters;
 
-namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
+namespace UdemyNewMicroService.Order.Api.Usecases.Orders
 {
     public static class CreateOrderEndpoint
     {

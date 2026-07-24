@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UdemyNewMicroService.Bus\UdemyNewMicroService.Bus.csproj" />
     <ProjectReference Include="..\UdemyNewMicroService.Order.Domain\UdemyNewMicroService.Order.Domain.csproj" />
   </ItemGroup>
 

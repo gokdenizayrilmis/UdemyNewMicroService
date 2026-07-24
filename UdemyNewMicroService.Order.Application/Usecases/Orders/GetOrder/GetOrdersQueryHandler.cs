@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
 using UdemyNewMicroService.Order.Application.Contracts.Repositories;
-using UdemyNewMicroService.Order.Application.Features.Orders.CreateOrder;
+using UdemyNewMicroService.Order.Application.Usecases.Orders.CreateOrder;
 using UdemyNewMicroService.Shared;
 using UdemyNewMicroService.Shared.Services;
 
-namespace UdemyNewMicroService.Order.Application.Features.Orders.GetOrder
+namespace UdemyNewMicroService.Order.Application.Usecases.Orders.GetOrder
 {
     public class GetOrdersQueryHandler(IIdentityService identityService, IOrderRepository orderRepository, IMapper mapper) : IRequestHandler<GetOrdersQuery, ServiceResult<List<GetOrdersResponse>>>
     {

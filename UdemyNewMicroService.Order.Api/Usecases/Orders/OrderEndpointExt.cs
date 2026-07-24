@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning.Builder;
 
-namespace UdemyNewMicroService.Order.Api.Endpoints.Orders
+namespace UdemyNewMicroService.Order.Api.Usecases.Orders
 {
     public static class OrderEndpointExt
     {
