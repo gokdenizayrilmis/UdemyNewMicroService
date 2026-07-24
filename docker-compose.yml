@@ -76,6 +76,18 @@ services:
       - "1433:1433"
     volumes:
       - sqlserver.db.order.volume:/var/opt/mssql
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3.13.7-management
+    container_name: rabbitmq.container
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes: 
+      - rabbitmq_data:/var/lib/rabbitmq
 
   keycloak:
     restart: always
@@ -132,3 +144,4 @@ volumes:
   sqlserver.db.order.volume:
   postgres.db.keycloak.volume:
   postgres.db.keycloak.ui.volume:
+  rabbitmq_data:

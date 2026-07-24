@@ -1,5 +1,6 @@
 using UdemyNewMicroService.Basket.Api;
 using UdemyNewMicroService.Basket.Api.Features.Baskets;
+using UdemyNewMicroService.Bus;
 using UdemyNewMicroService.Shared.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddCommonServiceExt(typeof(BasketAssembly));
 builder.Services.AddScoped<BasketService>();
 builder.Services.AddVersionningExt();
+builder.Services.AddMasstransitExt(builder.Configuration);
 
 builder.Services.AddStackExchangeRedisCache(options =>
 {

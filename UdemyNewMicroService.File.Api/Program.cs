@@ -1,4 +1,5 @@
 using Microsoft.Extensions.FileProviders;
+using UdemyNewMicroService.Bus;
 using UdemyNewMicroService.File.Api;
 using UdemyNewMicroService.File.Api.Features.File;
 using UdemyNewMicroService.Shared.Extensions;
@@ -12,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCommonServiceExt(typeof(FileAssembly));
 builder.Services.AddVersionningExt();
 builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+builder.Services.AddMasstransitExt(builder.Configuration);
+
 
 builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration);
 

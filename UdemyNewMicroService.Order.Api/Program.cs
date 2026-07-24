@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using UdemyNewMicroService.Bus;
 using UdemyNewMicroService.Order.Api.Usecases.Orders;
 using UdemyNewMicroService.Order.Application;
 using UdemyNewMicroService.Order.Application.Contracts.Repositories;
@@ -20,6 +21,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericReposito
 builder.Services.AddVersionningExt();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddMasstransitExt(builder.Configuration);
 
 builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration);
 

@@ -1,3 +1,4 @@
+using UdemyNewMicroService.Bus;
 using UdemyNewMicroService.Discount.Api;
 using UdemyNewMicroService.Discount.Api.Features.Discounts;
 using UdemyNewMicroService.Discount.Api.Options;
@@ -13,6 +14,8 @@ var mongoOption = builder.Configuration.GetSection("MongoOption").Get<MongoOptio
 builder.Services.AddSingleton(mongoOption);
 builder.Services.AddCommonServiceExt(typeof(DiscountAssembly));
 builder.Services.AddVersionningExt();
+builder.Services.AddMasstransitExt(builder.Configuration);
+
 
 builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration);
 

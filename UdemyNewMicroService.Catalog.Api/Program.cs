@@ -1,3 +1,4 @@
+using UdemyNewMicroService.Bus;
 using UdemyNewMicroService.Catalog.Api;
 using UdemyNewMicroService.Catalog.Api.Features.Categories;
 using UdemyNewMicroService.Catalog.Api.Features.Courses;
@@ -12,6 +13,8 @@ builder.Services.AddOptionsExt();
 builder.Services.AddDatabaseServiceExt();
 builder.Services.AddCommonServiceExt(typeof(CatalogAssembly));
 builder.Services.AddVersionningExt();
+builder.Services.AddMasstransitExt(builder.Configuration);
+
 
 builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration);
 

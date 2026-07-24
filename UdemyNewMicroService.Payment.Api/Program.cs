@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using UdemyNewMicroService.Bus;
 using UdemyNewMicroService.Payment.Api;
 using UdemyNewMicroService.Payment.Api.Features.Payment;
 using UdemyNewMicroService.Payment.Api.Repositories;
@@ -10,7 +11,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer(); 
 builder.Services.AddVersionningExt(); 
 builder.Services.AddCommonServiceExt(typeof(PaymentAssembly)); 
-builder.Services.AddDbContext<AppDbContext>(options =>{options.UseInMemoryDatabase("payment-in-memory-db");}); 
+builder.Services.AddDbContext<AppDbContext>(options =>{options.UseInMemoryDatabase("payment-in-memory-db");});
+builder.Services.AddMasstransitExt(builder.Configuration);
 
 builder.Services.AddAuthenticationAndAuthorizationExt(builder.Configuration); 
 
