@@ -12,7 +12,7 @@ namespace UdemyNewMicroService.File.Api.Features.File.Upload
                 (await mediator.Send(new UploadFileCommand(file))).ToGenericResult())
                 .WithName("upload")
                 .MapToApiVersion(1, 0)
-                .DisableAntiforgery();
+                .DisableAntiforgery().RequireAuthorization("ClientCredential");
 
             return group;
         }

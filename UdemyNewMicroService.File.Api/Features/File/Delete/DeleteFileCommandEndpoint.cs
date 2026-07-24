@@ -10,7 +10,7 @@ namespace UdemyNewMicroService.File.Api.Features.File.Delete
             group.MapDelete("/{fileName}", async (string fileName, IMediator mediator) =>
                 (await mediator.Send(new DeleteFileCommand(fileName))).ToGenericResult())
                 .WithName("delete")
-                .MapToApiVersion(1, 0);
+                .MapToApiVersion(1, 0).RequireAuthorization("ClientCredential");
 
             return group;
         }
