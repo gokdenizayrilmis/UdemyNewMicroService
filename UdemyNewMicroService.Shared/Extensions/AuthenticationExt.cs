@@ -2,12 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 using UdemyNewMicroService.Shared.Options;
-using UdemyNewMicroService.Shared.Services;
 
 namespace UdemyNewMicroService.Shared.Extensions
 {
@@ -56,7 +52,7 @@ namespace UdemyNewMicroService.Shared.Extensions
             {
                 options.AddPolicy("x", policy =>
                 {
-                    policy.AuthenticationSchemes.Add("JwtBearerDefaults.AuthenticationScheme");
+                    policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
                     policy.RequireAuthenticatedUser();
                     policy.RequireClaim(ClaimTypes.Email);
                     policy.RequireClaim("client_id");
