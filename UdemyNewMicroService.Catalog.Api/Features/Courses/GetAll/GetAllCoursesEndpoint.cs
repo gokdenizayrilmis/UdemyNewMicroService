@@ -33,7 +33,8 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses.GetAll
                 (await mediator.Send(new GetAllCoursesQuery())).ToGenericResult())
                 .MapToApiVersion(1,0)
                 .WithName("GetAllCourses")
-                .AddEndpointFilter<ValidationFilter<GetAllCoursesQuery>>();
+                .AddEndpointFilter<ValidationFilter<GetAllCoursesQuery>>()
+                .RequireAuthorization("ClientCredential");
 
             return group;
         }

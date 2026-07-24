@@ -11,7 +11,7 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Categories.Create
                 (await mediator.Send(command)).ToGenericResult())
                 .WithName("CreateCategory")
                 .MapToApiVersion(1,0)
-                .AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
+                .AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>().RequireAuthorization("ClientCredential");
 
             return group;
         }

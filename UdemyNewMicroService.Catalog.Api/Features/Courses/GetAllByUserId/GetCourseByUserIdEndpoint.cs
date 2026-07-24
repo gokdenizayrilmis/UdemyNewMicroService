@@ -31,7 +31,7 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses.GetAllByUserId
             group.MapGet("/user/{userId:guid}", async (IMediator mediator, Guid userId) =>
                 (await mediator.Send(new GetCourseByUserIdQuery(userId))).ToGenericResult())
                 .MapToApiVersion(1, 0)
-                .WithName("GetByUserIdCourses");
+                .WithName("GetByUserIdCourses").RequireAuthorization("ClientCredential");
 
             return group;
         }

@@ -15,7 +15,7 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Courses.Create
                 .Produces<Guid>(StatusCodes.Status404NotFound)
                 .Produces<Guid>(StatusCodes.Status400BadRequest)
                 .Produces<Guid>(StatusCodes.Status500InternalServerError)
-                .AddEndpointFilter<ValidationFilter<CreateCourseCommand>>();
+                .AddEndpointFilter<ValidationFilter<CreateCourseCommand>>().RequireAuthorization("ClientCredential");
 
             return group;
         }

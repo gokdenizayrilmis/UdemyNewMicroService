@@ -14,7 +14,7 @@ namespace UdemyNewMicroService.Catalog.Api.Features.Categories
                 .WithApiVersionSet(apiVersionSet)
                 .CreateCategoryGroupItemEndpoint()
                 .GetAllCategoryGroupItemEndpoint()
-                .GetByIdCategoryGroupItemEndpoint();
+                .GetByIdCategoryGroupItemEndpoint().RequireAuthorization("ClientCredential");
         }
     }
 }
